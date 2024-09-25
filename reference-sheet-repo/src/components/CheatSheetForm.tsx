@@ -1,24 +1,25 @@
 "use client";
 import { useState } from "react";
+import MonacoEditor from "@/components/MonacoEditor";
 
 const CheatsheetForm = () => {
-  const [title, setTitle] = useState("");
-  const [syntax, setSyntax] = useState("");
-  const [usage, setUsage] = useState("");
-  const [example, setExample] = useState("");
-  const [notes, setNotes] = useState("");
-  const [linkToDocs, setLinkToDocs] = useState("");
-  const [language, setLanguage] = useState("");
-  const [tags, setTags] = useState([]);
+  const [title, setTitle] = useState<string>("");
+  const [syntax, setSyntax] = useState<string>("");
+  const [usage, setUsage] = useState<string>("");
+  const [example, setExample] = useState<string>(""); // State for the Monaco editor
+  const [notes, setNotes] = useState<string>("");
+  const [linkToDocs, setLinkToDocs] = useState<string>("");
+  const [language, setLanguage] = useState<string>("");
+  const [tags, setTags] = useState<string[]>([]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const cheatsheetData = {
       title,
       syntax,
       usage,
-      example,
+      example, // This will now hold the editor content
       notes,
       linkToDocs,
       language,
@@ -35,18 +36,16 @@ const CheatsheetForm = () => {
       });
 
       if (response.ok) {
-        // Handle successful response (e.g., reset form or show success message)
         console.log("Cheatsheet added successfully!");
         setTitle("");
         setSyntax("");
         setUsage("");
-        setExample("");
+        setExample(""); // Reset the editor content
         setNotes("");
         setLinkToDocs("");
         setLanguage("");
         setTags([]);
       } else {
-        // Handle error response
         console.error("Failed to add cheatsheet");
       }
     } catch (error) {
@@ -78,13 +77,10 @@ const CheatsheetForm = () => {
         onChange={(e) => setUsage(e.target.value)}
         required
       />
-      <textarea
-        className="mx-auto w-96 h-12 bg-white rounded text-black pl-4 mb-2"
-        placeholder="Example"
-        value={example}
-        onChange={(e) => setExample(e.target.value)}
-        required
-      />
+
+      {/* Monaco Editor with state */}
+      <MonacoEditor value={example} onChange={setExample} />
+
       <textarea
         className="mx-auto w-96 h-12 bg-white rounded text-black pl-4 mb-2"
         placeholder="Notes"
@@ -107,10 +103,12 @@ const CheatsheetForm = () => {
       />
       <input
         className="mx-auto w-96 h-12 bg-white rounded text-black pl-4 mb-2"
-        type="url"
-        placeholder="Tags"
-        value={tags}
-        onChange={(e) => setTags(e.target.value)}
+        type="text"
+        placeholder="Tags (comma-separated)"
+        value={tags.join(", ")}
+        onChange={(e) =>
+          setTags(e.target.value.split(",").map((tag) => tag.trim()))
+        }
       />
       <button type="submit">Add Cheatsheet</button>
     </form>

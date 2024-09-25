@@ -1,5 +1,6 @@
 import Markdown from "react-markdown";
 import CheatSheetForm from "../components/CheatSheetForm";
+import CheatSheetDisplay from "../components/CheatSheetDisplay";
 
 export default function Home() {
   const markdown = `# HTML Cheatsheet
@@ -49,6 +50,7 @@ export default function Home() {
       </ul>
       <div>
         <CheatSheetForm />
+        <CheatSheetDisplay />
       </div>
       <div className="bg-slate-600 m-3 p-5">
         <Markdown>{markdown}</Markdown>
