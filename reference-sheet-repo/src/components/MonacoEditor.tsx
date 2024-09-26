@@ -1,7 +1,6 @@
 // MonacoEditor.tsx
 "use client";
-import { useEffect } from "react";
-import Editor, { Monaco } from "@monaco-editor/react";
+import Editor from "@monaco-editor/react";
 
 type MonacoEditorProps = {
   value: string;
