@@ -1,34 +1,9 @@
-import Markdown from "react-markdown";
-import CheatSheetForm from "../components/CheatsheetForm";
-import CheatsheetDisplay from "../components/CheatsheetDisplay";
+import Markdown from "react-markdown"; /* allows markdown components */
+import CheatsheetForm from "@/components/CheatsheetForm";
+import CheatsheetDisplay from "@/components/CheatsheetForm";
 
 export default function Home() {
-  const markdown = `# HTML Cheatsheet
-
-  ## Basic HTML Structure
-  
-  \`\`\`html
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-    </head>
-    <body>
-      <header>
-        <h1>Welcome to My Cheatsheet</h1>
-      </header>
-      <section>
-        <p>This is a basic HTML structure example.</p>
-      </section>
-    </body>
-  </html>
-  \`\`\`
-  
-  - **\`<!DOCTYPE html>\`**: Defines the document type and version (HTML5).
-  - **\`<meta charset="UTF-8">\`**: Sets character encoding to UTF-8.
-  `;
+  const markdown = ` # Test `; /* string that is displayed with markdown formatting */
   return (
     <div className="container mx-auto bg-green-800">
       <h1 className="flex mb-5 justify-center text-5xl">
@@ -49,7 +24,7 @@ export default function Home() {
         <li className="hover:text-black">MongoDB</li>
       </ul>
       <div>
-        <CheatSheetForm />
+        <CheatsheetForm />
         <CheatsheetDisplay />
       </div>
       <div className="bg-slate-600 m-3 p-5">
