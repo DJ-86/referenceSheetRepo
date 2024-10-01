@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/CheatSheetForm.jsx"
+    "src/components/CheatSheetForm.jsx",
+    "src/lib/mongodb.js"
   ],
   "exclude": ["node_modules"]
 }
