@@ -1,5 +1,3 @@
-import CheatSheetForm from "../components/CheatsheetForm";
-import CheatsheetDisplay from "../components/CheatsheetDisplay";
 import SignIn from "@/components/SignIn";
 import RegistrationForm from "@/components/RegistrationForm";
 
@@ -11,8 +9,6 @@ export default function Home() {
       </h1>
       <RegistrationForm />
       <SignIn />
-      <CheatSheetForm />
-      <CheatsheetDisplay />
       <div className="bg-slate-600 m-3 p-5"></div>
     </div>
   );
